@@ -10,17 +10,15 @@ public class GoalKeeperAnim : MonoBehaviour
     private bool isSaved = false;
     void Update()
     {
-            if (Vector3.Distance(transform.position, _ball.transform.position) < 13f && !isSaved)
-            {
-                isSaved = true;
-                _animator.SetInteger("AnimIndex", Random.Range(1, 10));
-            }
-            else
-            {
-                _animator.SetInteger("AnimIndex", 0);
+        if (Vector3.Distance(transform.position, _ball.transform.position) < 13f && !isSaved)
+        {
+            isSaved = true;
+            _animator.SetInteger("AnimIndex", Random.Range(1, 10));
+        }
+        else
+        {
+            _animator.SetInteger("AnimIndex", 0);
 
-            }
-        
-    
+        }
     }
 }

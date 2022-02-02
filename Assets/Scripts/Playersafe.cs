@@ -18,28 +18,22 @@ public class Playersafe : MonoBehaviour
                 case GoalkeeperInput.SaveDir.saveRUp:
                     //make some anim to affset to right
                     _animator.SetInteger("AnimIndex", 3);
-
                     break;
                 case GoalkeeperInput.SaveDir.saveRDown:
                     _animator.SetInteger("AnimIndex", 1);
-
                     break;
                 case GoalkeeperInput.SaveDir.saveLUp:
                     //make some anim to affset to left
                     _animator.SetInteger("AnimIndex", 3);
-
                     break;
                 case GoalkeeperInput.SaveDir.saveLDown:
                     _animator.SetInteger("AnimIndex", 5);
-
                     break;
                 case GoalkeeperInput.SaveDir.saveCenter:
                     _animator.SetInteger("AnimIndex", 2);
-
                     break;
                 case GoalkeeperInput.SaveDir.saveCUp:
                     _animator.SetInteger("AnimIndex", 3);
-
                     break;
                 default:
                     break;
@@ -49,7 +43,6 @@ public class Playersafe : MonoBehaviour
         else
         {
             _animator.SetInteger("AnimIndex", 0);
-
         }
     }
 }
