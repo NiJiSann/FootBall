@@ -15,7 +15,7 @@ public class VCamSwitch : MonoBehaviour
 
     private bool isSave = true;
     private bool isWatch = true;
-    private bool tutPass = false;
+    private static bool tutPass = false;
     void Start()
     {
         _goalkeeperVCam.SetActive(false);
