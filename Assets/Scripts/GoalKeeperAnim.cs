@@ -12,13 +12,21 @@ public class GoalKeeperAnim : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, _ball.transform.position) < 13f && !isSaved)
         {
+            print("ee");
             isSaved = true;
             _animator.SetInteger("AnimIndex", Random.Range(1, 10));
+            StartCoroutine(Co());
         }
         else
         {
             _animator.SetInteger("AnimIndex", 0);
 
         }
+    }
+
+    IEnumerator Co()
+    {
+        yield return new WaitForSeconds(1f);
+        isSaved = false;
     }
 }

@@ -42,6 +42,8 @@ public class PlayerAnim : MonoBehaviour
 
         if (GameState.GetState == GameState.GameStates.watch && !iskicked)
         {
+            BallKick.isChecked = false;
+
             iskicked = true;
             _leftLeg.tag = "Player";
             _rightLeg.tag = "Player";
@@ -54,6 +56,7 @@ public class PlayerAnim : MonoBehaviour
 
     void KickBall()
     {
+        BallKick.isChecked = false;
         _leftLeg.tag = "Player";
         _rightLeg.tag = "Player";
         animator.SetTrigger("Kick");

@@ -7,6 +7,7 @@ public class ResetPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject _ball;
     [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _playerEnem;
     [SerializeField] private GameObject _playerGK;
     [SerializeField] private GameObject _GK;
     [SerializeField] private Vector3 _ballinitPos;
@@ -36,6 +37,9 @@ public class ResetPlayer : MonoBehaviour
         _playerGK.transform.localPosition = _GKInitPos;
         _GK.transform.localPosition = _GKInitPos;
         _player.transform.localPosition = _playerInitPos;
+        _playerEnem.transform.localPosition = _playerInitPos;
         _player.transform.rotation = Quaternion.identity;
+        //_playerGK.transform.rotation = new  Quaternion(1,1,1,1);
+        //_GK.transform.rotation = new Quaternion(1, 1, 1, 1);
     }
 }

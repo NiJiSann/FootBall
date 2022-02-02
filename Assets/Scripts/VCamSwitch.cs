@@ -11,9 +11,11 @@ public class VCamSwitch : MonoBehaviour
     [SerializeField] private GameObject[] buttonsDef;
     [SerializeField] private GameObject[] buttonsAtck;
 
+    [SerializeField] private GameObject _tut_2;
+
     private bool isSave = true;
     private bool isWatch = true;
-
+    private bool tutPass = false;
     void Start()
     {
         _goalkeeperVCam.SetActive(false);
@@ -38,6 +40,12 @@ public class VCamSwitch : MonoBehaviour
         isSave = false;
         isWatch = true;
         yield return new WaitForSeconds(2f);
+        if (!tutPass)
+        {
+            _tut_2.SetActive(true);
+            tutPass = true;
+        }
+
         foreach (var btn in buttonsDef)
         {
             btn.SetActive(true);
