@@ -8,7 +8,8 @@ public class VCamSwitch : MonoBehaviour
     [SerializeField] private GameObject _goalkeeperVCam;
     [SerializeField] private GameObject _watchVCam;
 
-    [SerializeField] private GameObject[] buttons;
+    [SerializeField] private GameObject[] buttonsDef;
+    [SerializeField] private GameObject[] buttonsAtck;
 
     private bool isSave = true;
     private bool isWatch = true;
@@ -18,7 +19,7 @@ public class VCamSwitch : MonoBehaviour
         _goalkeeperVCam.SetActive(false);
         _watchVCam.SetActive(false);
 
-        foreach (var btn in buttons)
+        foreach (var btn in buttonsDef)
         {
             btn.SetActive(false);
         }
@@ -36,10 +37,14 @@ public class VCamSwitch : MonoBehaviour
     {
         isSave = false;
         isWatch = true;
-        yield return new WaitForSeconds(3f);
-        foreach (var btn in buttons)
+        yield return new WaitForSeconds(2f);
+        foreach (var btn in buttonsDef)
         {
             btn.SetActive(true);
+        }
+        foreach (var btn in buttonsAtck)
+        {
+            btn.SetActive(false);
         }
         _goalkeeperVCam.SetActive(true);
         _startVCam.SetActive(false);
@@ -51,11 +56,15 @@ public class VCamSwitch : MonoBehaviour
         isWatch = false;
         isSave = true;
 
-        foreach (var btn in buttons)
+        foreach (var btn in buttonsDef)
         {
             btn.SetActive(false);
         }
-        yield return new WaitForSeconds(1f);
+        foreach (var btn in buttonsAtck)
+        {
+            btn.SetActive(true);
+        }
+        yield return new WaitForSeconds(2f);
         _watchVCam.SetActive(true);
         _goalkeeperVCam.SetActive(false);
         _startVCam.SetActive(false);

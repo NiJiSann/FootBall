@@ -10,6 +10,17 @@ public class PlayerAnim : MonoBehaviour
 
     private bool iskicked;
 
+    private void OnEnable()
+    {
+        BallKick.OnKick += KickBall;
+
+    }
+
+    private void OnDisable()
+    {
+        BallKick.OnKick -= KickBall;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -29,15 +40,6 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool("isRunningBack", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && GameState.GetState==GameState.GameStates.kick)
-        {
-            _leftLeg.tag = "Player";
-            _rightLeg.tag = "Player";
-            animator.SetTrigger("Kick");
-            //Update GameState
-            StartCoroutine(SwitchGameState());
-        }
-
         if (GameState.GetState == GameState.GameStates.watch && !iskicked)
         {
             iskicked = true;
@@ -48,17 +50,28 @@ public class PlayerAnim : MonoBehaviour
             StartCoroutine(SwitchGameStateB());
         }
 
-        IEnumerator SwitchGameState()
-        {
-            yield return new WaitForSeconds(2f);
-            GameState.GetState = GameState.GameStates.save;
+    }
 
-        }
-        IEnumerator SwitchGameStateB()
-        {
-            yield return new WaitForSeconds(2f);
-            GameState.GetState = GameState.GameStates.kick;
+    void KickBall()
+    {
+        _leftLeg.tag = "Player";
+        _rightLeg.tag = "Player";
+        animator.SetTrigger("Kick");
+        //Update GameState
+        StartCoroutine(SwitchGameState());
+    }
 
-        }
+    IEnumerator SwitchGameState()
+    {
+        yield return new WaitForSeconds(2f);
+        GameState.GetState = GameState.GameStates.save;
+
+    }
+    IEnumerator SwitchGameStateB()
+    {
+        yield return new WaitForSeconds(2f);
+        GameState.GetState = GameState.GameStates.kick;
+        iskicked = false;
+
     }
 }
