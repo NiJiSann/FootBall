@@ -7,7 +7,7 @@ public class BallKick : MonoBehaviour
 {
     [SerializeField] private BGCurve[] bGCurve;
     private BGCcTrs _trs;
-
+    private bool iskicked =false;
     private void Awake()
     {
         int curveIndex = Random.Range(0, bGCurve.Length - 1);
@@ -17,8 +17,17 @@ public class BallKick : MonoBehaviour
     {
         if (_trs.DistanceRatio>.9f)
         {
+            _trs.DistanceRatio = 0;
             _trs.MoveObject = false;
-        } 
+        }
+
+        if (GameState.GetState == GameState.GameStates.save && !iskicked)
+        {
+            iskicked = true;
+            _trs.Speed = 0;
+            _trs.MoveObject = true;
+        }
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,9 +38,7 @@ public class BallKick : MonoBehaviour
         }
         if(collision.transform.CompareTag("Enemy"))
         {
-            print("Coll");
             _trs.MoveObject = false;
-
         }
     }
 }
