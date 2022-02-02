@@ -14,6 +14,8 @@ public class UIScoreCount : MonoBehaviour
     [SerializeField] private Image _win;
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private GameObject _loseScreen;
+    [SerializeField] private GameObject _startScreen;
+    [SerializeField] private Button _play;
 
     [SerializeField] private Button _rest;
 
@@ -37,6 +39,7 @@ public class UIScoreCount : MonoBehaviour
     private void Start()
     {
         _rest.onClick.AddListener(()=>SceneManager.LoadScene(0));
+        _play.onClick.AddListener(()=>_startScreen.SetActive(false));
     }
 
     private void Update()

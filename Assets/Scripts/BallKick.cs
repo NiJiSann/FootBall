@@ -26,12 +26,12 @@ public class BallKick : MonoBehaviour
     private void Start()
     {
       
-            saveRUp.onClick.AddListener(() =>       {SetIndex(0); OnKick(); });
-            saveRDown.onClick.AddListener(() =>     {SetIndex(1); OnKick(); });
-            saveCUp.onClick.AddListener(() =>       {SetIndex(2); OnKick(); });
-            saveCenter.onClick.AddListener(() =>    {SetIndex(3); OnKick(); });
-            saveLUp.onClick.AddListener(() =>       {SetIndex(4); OnKick(); });
-            saveLDown.onClick.AddListener(() =>     {SetIndex(5); OnKick(); });
+            saveRUp.onClick.AddListener(() =>       {SetIndex(0); OnKick(); DisableBtn(); });
+            saveRDown.onClick.AddListener(() =>     {SetIndex(1); OnKick(); DisableBtn(); });
+            saveCUp.onClick.AddListener(() =>       {SetIndex(2); OnKick(); DisableBtn(); });
+            saveCenter.onClick.AddListener(() =>    {SetIndex(3); OnKick(); DisableBtn(); });
+            saveLUp.onClick.AddListener(() =>       {SetIndex(4); OnKick(); DisableBtn(); });
+            saveLDown.onClick.AddListener(() =>     {SetIndex(5); OnKick(); DisableBtn(); });
         
         _trs = bGCurve[curveIndex].GetComponent<BGCcTrs>();
         _trs.Speed = 0;
@@ -70,6 +70,15 @@ public class BallKick : MonoBehaviour
 
     }
 
+    private void DisableBtn()
+    {
+        saveRUp.gameObject.SetActive(false);
+        saveRDown.gameObject.SetActive(false);
+        saveCUp.gameObject.SetActive(false);
+        saveCenter.gameObject.SetActive(false);
+        saveLUp.gameObject.SetActive(false);
+        saveLDown.gameObject.SetActive(false);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

@@ -68,14 +68,17 @@ public class VCamSwitch : MonoBehaviour
         {
             btn.SetActive(false);
         }
-        foreach (var btn in buttonsAtck)
-        {
-            btn.SetActive(true);
-        }
         yield return new WaitForSeconds(2f);
         _watchVCam.SetActive(true);
         _goalkeeperVCam.SetActive(false);
         _startVCam.SetActive(false);
+        yield return new WaitForSeconds(1f);
+
+        foreach (var btn in buttonsAtck)
+        {
+            btn.SetActive(true);
+        }
+
 
     }
 }

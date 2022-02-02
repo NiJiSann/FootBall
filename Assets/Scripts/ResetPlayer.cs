@@ -39,7 +39,7 @@ public class ResetPlayer : MonoBehaviour
         _player.transform.localPosition = _playerInitPos;
         _playerEnem.transform.localPosition = _playerInitPos;
         _player.transform.rotation = Quaternion.identity;
-        //_playerGK.transform.rotation = new  Quaternion(1,1,1,1);
-        //_GK.transform.rotation = new Quaternion(1, 1, 1, 1);
+        //_playerGK.transform.rotation = Quaternion.identity;
+        //_GK.transform.rotation = Quaternion.identity;
     }
 }

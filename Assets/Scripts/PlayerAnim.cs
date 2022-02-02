@@ -8,6 +8,8 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField] private GameObject _leftLeg;
     [SerializeField] private GameObject _rightLeg;
 
+    [SerializeField] private AudioSource _kickAudio;
+ 
     private bool iskicked;
 
     private void OnEnable()
@@ -59,6 +61,7 @@ public class PlayerAnim : MonoBehaviour
         BallKick.isChecked = false;
         _leftLeg.tag = "Player";
         _rightLeg.tag = "Player";
+        //_kickAudio.Play();
         animator.SetTrigger("Kick");
         //Update GameState
         StartCoroutine(SwitchGameState());
@@ -66,7 +69,9 @@ public class PlayerAnim : MonoBehaviour
 
     IEnumerator SwitchGameState()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.5f);
+        _kickAudio.Play();
+        yield return new WaitForSeconds(1.5f);
         GameState.GetState = GameState.GameStates.save;
 
     }
