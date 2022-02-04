@@ -1,29 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class InputHandler : MonoBehaviour
 {
+    [SerializeField] private BtnData[] _btns;
 
-    [SerializeField] private Button RUBtn;
-    [SerializeField] private Button RDBtn;
-    [SerializeField] private Button CUBtn;
-    [SerializeField] private Button CCBtn;
-    [SerializeField] private Button LUBtn;
-    [SerializeField] private Button LDBtn;
+    [SerializeField] private Image _attackImg;
+    [SerializeField] private Image _defenseImg;
 
-    //[SerializeField] private 
+    [SerializeField] private GameObject _btnHolder;
+
+    [SerializeField] private Transform _defensePos;
+    [SerializeField] private Transform _attackPos;
+
+    [SerializeField]private bool isAttackState;
 
     private int _lastPressedBtnIndex;
 
+    public static Action OnKick;
+
+    public int LastPressedBtnIndex { get => _lastPressedBtnIndex; set => _lastPressedBtnIndex = value; }
+
     void Start()
     {
-        RUBtn.onClick.AddListener(() => {_lastPressedBtnIndex = 3; print(_lastPressedBtnIndex); });
-        RDBtn.onClick.AddListener(() => {_lastPressedBtnIndex = 6; print(_lastPressedBtnIndex); });
-        CUBtn.onClick.AddListener(() => {_lastPressedBtnIndex = 2; print(_lastPressedBtnIndex); });
-        CCBtn.onClick.AddListener(() => {_lastPressedBtnIndex = 5; print(_lastPressedBtnIndex); });
-        LUBtn.onClick.AddListener(() => {_lastPressedBtnIndex = 1; print(_lastPressedBtnIndex); });
-        LDBtn.onClick.AddListener(() => {_lastPressedBtnIndex = 4; print(_lastPressedBtnIndex); });
+        for (int i = 0; i < _btns.Length; i++)
+        {
+            int t = i;
+            _btns[i].GetComponent<Button>().onClick.AddListener(() =>
+            {
+                LastPressedBtnIndex = _btns[t].BtnIndex;
+                print(LastPressedBtnIndex);
+                OnKick();
+            });
+        }
+
+        SetButtons(isAttackState);
     }
+
+    private void SetButtons(bool _isAttackState)
+    {
+        if (!_isAttackState)
+        {
+            _btnHolder.transform.eulerAngles = Vector3.zero;
+            _btnHolder.transform.position = _attackPos.position;
+
+            for (int i = 0; i < _btns.Length; i++)
+                _btns[i].SetSprite(_attackImg.sprite);
+        }
+        else
+        {
+            _btnHolder.transform.eulerAngles = new Vector3(0, 180, 0);
+            _btnHolder.transform.position = _defensePos.position;
+
+            for (int i = 0; i < _btns.Length; i++)
+                _btns[i].SetSprite(_defenseImg.sprite);
+        }
+    }
+
+
 }

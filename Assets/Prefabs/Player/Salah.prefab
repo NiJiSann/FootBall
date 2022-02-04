@@ -842,7 +842,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 670341166958608869}
-  - component: {fileID: 3599893902370180594}
   m_Layer: 0
   m_Name: mixamorig:LeftToeBase
   m_TagString: Player
@@ -865,19 +864,6 @@ Transform:
   m_Father: {fileID: 8095654881813131130}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3599893902370180594
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4779563585792493222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5005880088490565104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1043,8 +1029,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6290301592549971616}
   - component: {fileID: 120347234590919898}
-  - component: {fileID: 5240235069367072318}
-  - component: {fileID: 7514733150859333219}
   m_Layer: 0
   m_Name: Salah
   m_TagString: Untagged
@@ -1061,7 +1045,7 @@ Transform:
   m_GameObject: {fileID: 6629425456249801754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.6157462, y: -2.3708506, z: 1.8296928}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 1953420069737182772}
   - {fileID: 7362226799107438299}
@@ -1087,36 +1071,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5240235069367072318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629425456249801754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec6f92626dea4648a40a4320fa086a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 120347234590919898}
-  _leftLeg: {fileID: 4779563585792493222}
-  _rightLeg: {fileID: 7066286154331279836}
-  _kickAudio: {fileID: 0}
---- !u!114 &7514733150859333219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6629425456249801754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686c62304fdd04dde9a8ea33951d7e18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 100
-  animator: {fileID: 120347234590919898}
 --- !u!1 &6822800037601777726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1143,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8698886550169954275}
-  - component: {fileID: 1274926053965306508}
   m_Layer: 0
   m_Name: mixamorig:RightToeBase
   m_TagString: Player
@@ -1212,19 +1165,6 @@ Transform:
   m_Father: {fileID: 6390656175282329399}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1274926053965306508
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7066286154331279836}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7127167870343447362
 GameObject:
   m_ObjectHideFlags: 0
