@@ -31,6 +31,7 @@ public class ResetPlayer : MonoBehaviour
     {
         yield return new  WaitForSeconds(3.9f);
         _ball.transform.localPosition = _ballinitPos;
+
         _ball.GetComponent<Rigidbody>().isKinematic = true;
         _ball.GetComponent<Rigidbody>().isKinematic = false;
 

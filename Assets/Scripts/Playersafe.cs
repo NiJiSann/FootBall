@@ -40,9 +40,5 @@ public class Playersafe : MonoBehaviour
             }
          
         }
-        else
-        {
-            _animator.SetInteger("AnimIndex", 0);
-        }
     }
 }

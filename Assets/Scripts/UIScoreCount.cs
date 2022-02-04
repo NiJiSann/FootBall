@@ -18,8 +18,9 @@ public class UIScoreCount : MonoBehaviour
     [SerializeField] private Button _play;
 
     [SerializeField] private Button _rest;
+    [SerializeField] private BallKick _ballKick;
 
-    private int _egpScore = 0 ;
+    private int _egpScore = 0;
     private int _camerScore = 0;
 
     private void OnEnable()
@@ -33,18 +34,18 @@ public class UIScoreCount : MonoBehaviour
     private void OnDisable()
     {
         BallKick.OnGoal -= UpdateScore;
-        BallKick.OnFail += Fail;
+        BallKick.OnFail -= Fail;
     }
 
     private void Start()
     {
-        _rest.onClick.AddListener(()=>SceneManager.LoadScene(0));
-        _play.onClick.AddListener(()=>_startScreen.SetActive(false));
+        _rest.onClick.AddListener(() => SceneManager.LoadScene(0));
+        _play.onClick.AddListener(() => _startScreen.SetActive(false));
     }
 
     private void Update()
     {
-        if (_egpScore==3)
+        if (_egpScore == 3)
         {
             _winScreen.SetActive(true);
             _rest.gameObject.SetActive(true);
@@ -63,29 +64,25 @@ public class UIScoreCount : MonoBehaviour
         if (GameState.GetState == GameState.GameStates.watch)
         {
             _camerAtt[_camerScore].sprite = _fail.sprite;
-            //_egyptAtt[_egpScore] = _fail;
             _camerScore++;
         }
         else
         {
-            //_camerAtt[_camerScore] = _fail;
             _egyptAtt[_egpScore].sprite = _fail.sprite;
             _egpScore++;
         }
     }
-    
+
     private void UpdateScore()
     {
 
-        if (GameState.GetState==GameState.GameStates.watch)
+        if (!_ballKick.IsKickPlayer)
         {
             _camerAtt[_camerScore].sprite = _win.sprite;
-            //_egyptAtt[_egpScore] = _fail;
             _camerScore++;
         }
         else
         {
-            //_camerAtt[_camerScore] = _fail;
             _egyptAtt[_egpScore].sprite = _win.sprite;
             _egpScore++;
         }

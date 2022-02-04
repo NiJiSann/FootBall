@@ -26,6 +26,8 @@ public class GoalkeeperInput : MonoBehaviour
     [SerializeField] private Button saveLUp;
     [SerializeField] private Button saveLDown;
 
+    //[SerializeField] private BallKick _ballKick;
+
     private void Start()
     {
         saveRUp.onClick.AddListener(()=> SetAnimIndex(1));
@@ -38,6 +40,7 @@ public class GoalkeeperInput : MonoBehaviour
 
     void SetAnimIndex(int i)
     {
+        //_ballKick.Kick();
         animIndex = (SaveDir)i;
         GameState.GetState = GameState.GameStates.watch;
     }

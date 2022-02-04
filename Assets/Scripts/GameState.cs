@@ -9,6 +9,7 @@ public class GameState : MonoBehaviour
     [SerializeField] private GameObject _playerGK;
     [SerializeField] private GameObject _running;
     [SerializeField] private GameObject _cameronEnem;
+
     public enum GameStates
     {
         kick,
@@ -16,7 +17,7 @@ public class GameState : MonoBehaviour
         watch
     }
 
-    private static  GameStates gameState;
+    private static GameStates gameState;
 
     public static GameStates GetState
     {
@@ -26,19 +27,29 @@ public class GameState : MonoBehaviour
         }
         set
         {
+            Debug.Log(value);
             gameState = value;
-            OnStateChange();
+            OnStateChange?.Invoke();
         }
     }
 
     public static Action OnStateChange;
 
-    private void Update()
+    private void OnEnable()
+    {
+        OnStateChange += F;
+    }
+
+    private void OnDisable()
+    {
+        OnStateChange -= F;
+    }
+
+    private void F()
     {
         if (gameState == GameStates.kick)
         {
             StartCoroutine(Switch());
-
         }
         else
         {
