@@ -1029,6 +1029,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6290301592549971616}
   - component: {fileID: 120347234590919898}
+  - component: {fileID: 3432161796832675662}
   m_Layer: 0
   m_Name: Salah
   m_TagString: Untagged
@@ -1071,6 +1072,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3432161796832675662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629425456249801754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442e098f5436641e8b024495960603d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAnimator: {fileID: 120347234590919898}
 --- !u!1 &6822800037601777726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1138,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6900669225138024257}
-  m_LocalRotation: {x: 0.086042546, y: -0.05231439, z: -0.021804096, w: 0.9946781}
+  m_LocalRotation: {x: 0.084717445, y: 0.0022524374, z: -0.026482638, w: 0.9960505}
   m_LocalPosition: {x: -0.032432698, y: 5.187791, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1133,7 +1147,7 @@ Transform:
   - {fileID: 2266164809358099879}
   m_Father: {fileID: 6290301592549971616}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.723, y: 0, z: -3.046}
 --- !u!1 &7066286154331279836
 GameObject:
   m_ObjectHideFlags: 0

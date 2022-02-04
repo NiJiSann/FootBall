@@ -874,8 +874,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5111808535022525954}
   - component: {fileID: 1157678077618029688}
-  - component: {fileID: 8916073120788313956}
-  - component: {fileID: 8916073120788313955}
   m_Layer: 0
   m_Name: OnanaEnemy
   m_TagString: Untagged
@@ -918,36 +916,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8916073120788313956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5601099612378334392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec6f92626dea4648a40a4320fa086a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1157678077618029688}
-  _leftLeg: {fileID: 6048056114314857988}
-  _rightLeg: {fileID: 8334778549659326846}
-  _kickAudio: {fileID: 0}
---- !u!114 &8916073120788313955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5601099612378334392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686c62304fdd04dde9a8ea33951d7e18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 10
-  animator: {fileID: 1157678077618029688}
 --- !u!1 &5656366267116972003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,7 +1019,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798887346468522311}
-  - component: {fileID: 7343217966135164383}
   m_Layer: 0
   m_Name: mixamorig:LeftToeBase
   m_TagString: Untagged
@@ -1074,19 +1041,6 @@ Transform:
   m_Father: {fileID: 7053448486333769688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7343217966135164383
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6048056114314857988}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0025451663, y: 0.0036085872, z: 0.0029712925}
-  m_Center: {x: 0.000024215704, y: -0.00056621473, z: 0.0014356411}
 --- !u!1 &6107756670731834706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1422,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7567118321655328577}
-  - component: {fileID: 5020475396792003237}
   m_Layer: 0
   m_Name: mixamorig:RightToeBase
   m_TagString: Untagged
@@ -1491,19 +1444,6 @@ Transform:
   m_Father: {fileID: 5263374056178851733}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5020475396792003237
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8334778549659326846}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.0025451663, y: 0.0036085872, z: 0.0029712925}
-  m_Center: {x: 0.000024215704, y: -0.00056621473, z: 0.0014356411}
 --- !u!1 &8528965173569143541
 GameObject:
   m_ObjectHideFlags: 0

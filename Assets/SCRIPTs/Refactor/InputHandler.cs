@@ -30,7 +30,6 @@ public class InputHandler : MonoBehaviour
             _btns[i].GetComponent<Button>().onClick.AddListener(() =>
             {
                 LastPressedBtnIndex = _btns[t].BtnIndex;
-                print(LastPressedBtnIndex);
                 OnKick();
             });
         }
