@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VCamController : MonoBehaviour
@@ -26,7 +24,7 @@ public class VCamController : MonoBehaviour
 
     private IEnumerator SwitchCamToNextCo(GameState.GameStates gameState)
     {
-        if (gameState!= GameState.GameStates.watch)
+        if (gameState != GameState.GameStates.watch)
             yield return new WaitForSeconds(1f);
         _camIndex++;
         int _indexMod = _camIndex % 3;

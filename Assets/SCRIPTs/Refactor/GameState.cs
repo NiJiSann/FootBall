@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
@@ -9,9 +8,10 @@ public class GameState : MonoBehaviour
     {
         kick,
         save,
-        watch
+        watch,
     }
     public static Action<GameStates> OnStateChange;
+
     private GameStates gameSt;
 
     public GameStates GameSt
@@ -22,9 +22,8 @@ public class GameState : MonoBehaviour
         }
         set
         {
-            //Debug.Log(value);
             int intEnum = (int)value;
-            gameSt = (GameStates)(intEnum%3);
+            gameSt = (GameStates)(intEnum % 3);
             OnStateChange?.Invoke(gameSt);
             if (gameSt == GameStates.watch)
                 StartCoroutine(AutoSwitchState());
@@ -33,9 +32,7 @@ public class GameState : MonoBehaviour
 
     IEnumerator AutoSwitchState()
     {
-        print("auto switch start");
         yield return new WaitForSeconds(5f);
-        print("auto switch end");
 
         GameSt = GameStates.kick;
     }

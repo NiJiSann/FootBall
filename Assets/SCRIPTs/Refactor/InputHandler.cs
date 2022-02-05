@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,11 +43,9 @@ public class InputHandler : MonoBehaviour
             _btns[i].GetComponent<Button>().onClick.AddListener(() =>
             {
                 LastPressedBtnIndex = _btns[t].BtnIndex;
-                print(_gameState.GameSt);
                 int temp = (int)_gameState.GameSt;
                 temp++;
-                _gameState.GameSt =(GameState.GameStates)temp;
-                print(_gameState.GameSt);
+                _gameState.GameSt = (GameState.GameStates)temp;
 
                 OnKick?.Invoke();
             });
@@ -57,22 +56,10 @@ public class InputHandler : MonoBehaviour
     {
         if (gameState == GameState.GameStates.kick)
         {
-            foreach (var btn in _btns)
-            {
-                btn.gameObject.SetActive(true);
-            }
-            _btnHolder.transform.eulerAngles = Vector3.zero;
-            _btnHolder.transform.position = _attackPos.position;
-
-            for (int i = 0; i < _btns.Length; i++)
-                _btns[i].SetSprite(_attackImg.sprite);
+            StartCoroutine(SetAttackBtnsWithOffsetCo());
         }
         else if (gameState == GameState.GameStates.save)
         {
-            //foreach (var btn in _btns)
-            //{
-            //    btn.gameObject.SetActive(false);
-            //}
             _btnHolder.transform.eulerAngles = new Vector3(0, 180, 0);
             _btnHolder.transform.position = _defensePos.position;
 
@@ -86,5 +73,19 @@ public class InputHandler : MonoBehaviour
                 btn.gameObject.SetActive(false);
             }
         }
+    }
+
+    IEnumerator SetAttackBtnsWithOffsetCo()
+    {
+        yield return new WaitForSeconds(2f);
+        foreach (var btn in _btns)
+        {
+            btn.gameObject.SetActive(true);
+        }
+        _btnHolder.transform.eulerAngles = Vector3.zero;
+        _btnHolder.transform.position = _attackPos.position;
+
+        for (int i = 0; i < _btns.Length; i++)
+            _btns[i].SetSprite(_attackImg.sprite);
     }
 }
