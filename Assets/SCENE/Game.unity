@@ -737,7 +737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &172119553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5714,7 +5714,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2928a89e068834ef3876b04858d71ec8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d9db661955d24f75a73f1c682e605ab, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -8385,6 +8385,7 @@ GameObject:
   - component: {fileID: 1808463028}
   - component: {fileID: 1808463029}
   - component: {fileID: 1808463030}
+  - component: {fileID: 1808463031}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -8495,6 +8496,20 @@ MonoBehaviour:
   - {fileID: 359231057}
   - {fileID: 1113101750}
   - {fileID: 628154167}
+--- !u!114 &1808463031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808463025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c5fd15b7ff65432283e0c51297ff887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startScreen: {fileID: 172119552}
+  _playBtn: {fileID: 23534451}
 --- !u!1 &1818391237
 GameObject:
   m_ObjectHideFlags: 0

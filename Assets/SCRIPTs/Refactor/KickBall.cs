@@ -41,7 +41,7 @@ public class KickBall : MonoBehaviour
         int _curveIndex = _inputHandler.LastPressedBtnIndex - 1;
 
         if (gameState == GameState.GameStates.watch)
-            _curveIndex = 0;
+            _curveIndex = Random.Range(0, 5);
 
         _trs = _bGCurve[_curveIndex].GetComponent<BGCcTrs>();
 

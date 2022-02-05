@@ -28,6 +28,19 @@ public class WinCheck : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
+        else if (egyAttempt == 4)
+        {
+            if (egyScore - cmrScore >= 2)
+            {
+                _winScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else if (cmrScore - egyScore >= 2)
+            {
+                _loseScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
+        }
         else if (egyAttempt == 4 && cmrAttempt == 4)
         {
             if (egyScore > cmrScore)
