@@ -6,22 +6,23 @@ using UnityEngine;
 
 public class KickBall : MonoBehaviour
 {
-    [SerializeField] private BGCurve[] bGCurve;
-    [SerializeField] private InputHandler _inputHandler;
+    [SerializeField] private BGCurve[] _bGCurve;
     [SerializeField] private float _kickOffset = 0.35f;
+
+    [SerializeField] private InputHandler _inputHandler;
 
     private BGCcTrs _trs;
 
     private void OnEnable()
     {
-        InputHandler.OnKick += Kick;
+        GameState.OnStateChange += Kick;
     }
 
     private void OnDisable()
     {
-        InputHandler.OnKick -= Kick;
-
+        GameState.OnStateChange -= Kick;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Enemy"))
@@ -32,14 +33,27 @@ public class KickBall : MonoBehaviour
             _trs.Speed = 0;
         }
     }
-    private void Kick()
+    private void Kick(GameState.GameStates gameState)
     {
-        _trs = bGCurve[_inputHandler.LastPressedBtnIndex-1].GetComponent<BGCcTrs>();
+        if (gameState == GameState.GameStates.kick)
+            return;
+
+
+        int _curveIndex = _inputHandler.LastPressedBtnIndex - 1;
+
+        if (gameState == GameState.GameStates.watch)
+            _curveIndex = 0;
+
+        _trs = _bGCurve[_curveIndex].GetComponent<BGCcTrs>();
+
         _trs.Speed = 0;
-        StartCoroutine(KickCo());
+        StartCoroutine(KickCo(gameState));
     }
-    private IEnumerator KickCo()
+    private IEnumerator KickCo(GameState.GameStates gameState)
     {
+        if (gameState == GameState.GameStates.watch)
+            yield return new WaitForSeconds(2f);
+
         yield return new WaitForSeconds(_kickOffset);
 
         _trs.MoveObject = true;

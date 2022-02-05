@@ -8,15 +8,27 @@ public class KickAnimController : MonoBehaviour
 
     private void OnEnable()
     {
-        InputHandler.OnKick += StartKickAnim;
-    }
-    private void OnDisable()
-    {
-        InputHandler.OnKick -= StartKickAnim;
+        GameState.OnStateChange += StartKickAnim;
     }
 
-    private void StartKickAnim()
+    private void OnDisable()
     {
-        _playerAnimator.SetTrigger("Kick"); 
+        GameState.OnStateChange -= StartKickAnim;
+    }
+
+    private void StartKickAnim(GameState.GameStates gameState)
+    {
+        if (gameState == GameState.GameStates.kick)
+            return;
+        StartCoroutine(StartKickAnimCo(gameState));
+    }
+
+    IEnumerator StartKickAnimCo(GameState.GameStates gameState)
+    {
+        if (gameState == GameState.GameStates.watch)
+            yield return new WaitForSeconds(2f);
+
+        _playerAnimator.SetTrigger("Kick");
+
     }
 }

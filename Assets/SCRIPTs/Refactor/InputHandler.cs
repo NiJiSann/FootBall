@@ -14,13 +14,25 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private Transform _defensePos;
     [SerializeField] private Transform _attackPos;
 
-    [SerializeField]private bool isAttackState;
+    [SerializeField] private bool isAttackState;
+
+    [SerializeField] private GameState _gameState;
 
     private int _lastPressedBtnIndex;
 
     public static Action OnKick;
 
     public int LastPressedBtnIndex { get => _lastPressedBtnIndex; set => _lastPressedBtnIndex = value; }
+
+    private void OnEnable()
+    {
+        GameState.OnStateChange += SetButtons;
+    }
+
+    private void OnDisable()
+    {
+        GameState.OnStateChange -= SetButtons;
+    }
 
     void Start()
     {
@@ -30,32 +42,49 @@ public class InputHandler : MonoBehaviour
             _btns[i].GetComponent<Button>().onClick.AddListener(() =>
             {
                 LastPressedBtnIndex = _btns[t].BtnIndex;
-                OnKick();
+                print(_gameState.GameSt);
+                int temp = (int)_gameState.GameSt;
+                temp++;
+                _gameState.GameSt =(GameState.GameStates)temp;
+                print(_gameState.GameSt);
+
+                OnKick?.Invoke();
             });
         }
-
-        SetButtons(isAttackState);
     }
 
-    private void SetButtons(bool _isAttackState)
+    private void SetButtons(GameState.GameStates gameState)
     {
-        if (!_isAttackState)
+        if (gameState == GameState.GameStates.kick)
         {
+            foreach (var btn in _btns)
+            {
+                btn.gameObject.SetActive(true);
+            }
             _btnHolder.transform.eulerAngles = Vector3.zero;
             _btnHolder.transform.position = _attackPos.position;
 
             for (int i = 0; i < _btns.Length; i++)
                 _btns[i].SetSprite(_attackImg.sprite);
         }
-        else
+        else if (gameState == GameState.GameStates.save)
         {
+            //foreach (var btn in _btns)
+            //{
+            //    btn.gameObject.SetActive(false);
+            //}
             _btnHolder.transform.eulerAngles = new Vector3(0, 180, 0);
             _btnHolder.transform.position = _defensePos.position;
 
             for (int i = 0; i < _btns.Length; i++)
                 _btns[i].SetSprite(_defenseImg.sprite);
         }
+        else
+        {
+            foreach (var btn in _btns)
+            {
+                btn.gameObject.SetActive(false);
+            }
+        }
     }
-
-
 }

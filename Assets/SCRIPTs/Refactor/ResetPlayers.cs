@@ -42,9 +42,9 @@ public class ResetPlayers : MonoBehaviour
 
     IEnumerator ResetPlayersCo()
     {
-        print("Reset after 2sec");
+        //print("Reset after 2sec");
         yield return new WaitForSeconds(2f);
-        print("Reset");
+        //print("Reset");
 
         //resetPos
         _ball.transform.position = _ballInitPos;

@@ -11,38 +11,50 @@ public class GKAnimController : MonoBehaviour
     //this offset for anim 1,3
     [SerializeField] private float _moveSaveTImeOffset = 1f;
 
+    [SerializeField] private InputHandler _inputHandler;
+
     private void OnEnable()
     {
-        InputHandler.OnKick += Save;
+        GameState.OnStateChange += Save;
     }
 
     private void OnDisable()
     {
-        InputHandler.OnKick -= Save;
+        GameState.OnStateChange -= Save;
     }
 
-    private void Save()
+    private void Save(GameState.GameStates gameState)
     {
-        StartCoroutine(SaveCo());
+        if (gameState == GameState.GameStates.kick)
+            return;
+        StartCoroutine(SaveCo(gameState));
     }
 
-    IEnumerator SaveCo()
+    IEnumerator SaveCo(GameState.GameStates gameState)
     {
-        int AnimRandomindex = UnityEngine.Random.RandomRange(1, 9);
+        if (gameState == GameState.GameStates.watch)
+            yield return new WaitForSeconds(1f);
 
-        if (AnimRandomindex == 6)
+        int _animRandomindex = UnityEngine.Random.Range(1, 9);
+
+        if (gameState==GameState.GameStates.watch)
+            _animRandomindex = _inputHandler.LastPressedBtnIndex;
+
+        print(_animRandomindex);
+
+        if (_animRandomindex == 6)
         {
             yield return new WaitForSeconds(_moveSaveTImeOffset);
-            _gKAnimator.SetInteger("AnimIndex", AnimRandomindex);
+            _gKAnimator.SetInteger("AnimIndex", _animRandomindex);
         }
-        else if (AnimRandomindex == 1 || AnimRandomindex == 3)
+        else if (_animRandomindex == 1 || _animRandomindex == 3)
         {
             yield return new WaitForSeconds(_moveSaveTImeOffset);
-            _gKAnimator.SetInteger("AnimIndex", AnimRandomindex);
+            _gKAnimator.SetInteger("AnimIndex", _animRandomindex);
         }
         else
         {
-            _gKAnimator.SetInteger("AnimIndex", AnimRandomindex);
+            _gKAnimator.SetInteger("AnimIndex", _animRandomindex);
         }
         yield return new WaitForSeconds(1);
         _gKAnimator.SetInteger("AnimIndex", 0);

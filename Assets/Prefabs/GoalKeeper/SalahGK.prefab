@@ -1072,13 +1072,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6645590025703583438}
   - component: {fileID: 781880583990883508}
+  - component: {fileID: 6629425456273541106}
   m_Layer: 0
   m_Name: SalahGK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6645590025703583438
 Transform:
   m_ObjectHideFlags: 0
@@ -1088,7 +1089,7 @@ Transform:
   m_GameObject: {fileID: 6301151913337468020}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.1, y: 0, z: 52.23}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 1182672260406611546}
   - {fileID: 7879506422027505333}
@@ -1114,6 +1115,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6629425456273541106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301151913337468020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09ba731f8eaa047b8afac9554a346c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gKAnimator: {fileID: 781880583990883508}
+  _inPlaceSaveTImeOffset: 1
+  _moveSaveTImeOffset: 1
+  _inputHandler: {fileID: 0}
 --- !u!1 &6461675827415534435
 GameObject:
   m_ObjectHideFlags: 0
