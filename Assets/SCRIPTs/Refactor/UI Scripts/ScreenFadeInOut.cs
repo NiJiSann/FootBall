@@ -29,10 +29,11 @@ public class ScreenFadeInOut : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         _fade.gameObject.SetActive(true);
-        _fade.DOFade(1,.7f);
-        yield return new WaitForSeconds(1f);
-        _fade.DOFade(0 ,1f);
-        _fade.gameObject.SetActive(false);
 
+        DOTween.Sequence()
+            .Append(_fade.DOFade(1, .7f))
+            .AppendInterval(0.5f)
+            .Append(_fade.DOFade(0, 1f))
+            .AppendCallback(()=> _fade.gameObject.SetActive(false));
     }
 }
