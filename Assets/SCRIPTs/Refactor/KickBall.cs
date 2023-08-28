@@ -41,7 +41,7 @@ public class KickBall : MonoBehaviour
         int _curveIndex = _inputHandler.LastPressedBtnIndex - 1;
 
         if (gameState == GameState.GameStates.watch)
-            _curveIndex = Random.Range(0, 5);
+            _curveIndex = Random.Range(0, 6);
 
         _trs = _bGCurve[_curveIndex].GetComponent<BGCcTrs>();
 
@@ -57,6 +57,7 @@ public class KickBall : MonoBehaviour
 
         _trs.MoveObject = true;
         _trs.DistanceRatio = 0;
-        _trs.Speed = 15;
+        _trs.Speed = 20;
+        
     }
 }

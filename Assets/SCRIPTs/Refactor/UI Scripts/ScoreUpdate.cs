@@ -16,9 +16,12 @@ public class ScoreUpdate : MonoBehaviour
     [SerializeField] private GameState _gameState;
     [SerializeField] private WinCheck _winCheck;
 
+    [SerializeField] private TMP_Text _playerName;
+    [SerializeField] private TMP_Text _opponentName;
+    
     private int _egyScore;
     private int _cmrScore;
-
+ 
     private int _egyAttempt;
     private int _cmrAttempt;
 
@@ -35,6 +38,22 @@ public class ScoreUpdate : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        switch (PlayerPrefs.GetString("character"))
+        {
+            case "Amy":
+                _playerName.text = "Amy";
+                _opponentName.text = "Emy";
+                break;
+            default:
+                _playerName.text = "Emy";
+                _opponentName.text = "Amy";
+                break;
+        }
+
+    }
+
     private void UpdateSscore()
     {
         if (_gameState.GameSt == GameState.GameStates.save)
@@ -42,12 +61,16 @@ public class ScoreUpdate : MonoBehaviour
             _egyAttempts[_egyAttempt-1].sprite = _goalImg.sprite;
             _egyScore++;
             _egyScoreText.text = _egyScore.ToString();
+            _egyAttempts[_egyAttempt-1].color = Color.white;
+
         }
         else if (_gameState.GameSt == GameState.GameStates.watch)
         {
             _cmrAttempts[_cmrAttempt-1].sprite = _goalImg.sprite;
             _cmrScore++;
             _cmrScoreText.text = _cmrScore.ToString();
+            _cmrAttempts[_cmrAttempt-1].color = Color.white;
+
         }
     }
 
@@ -74,6 +97,7 @@ public class ScoreUpdate : MonoBehaviour
         if (images[index].sprite != _goalImg.sprite)
         {
             images[index].sprite = _missImg.sprite;
+            images[index].color = Color.red;
         }
     }
 }

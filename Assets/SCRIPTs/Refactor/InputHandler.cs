@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] private BtnData[] _btns;
-
-    [SerializeField] private Image _attackImg;
-    [SerializeField] private Image _defenseImg;
-
     [SerializeField] private GameObject _btnHolder;
 
     [SerializeField] private Transform _defensePos;
@@ -62,16 +58,12 @@ public class InputHandler : MonoBehaviour
         {
             _btnHolder.transform.eulerAngles = new Vector3(0, 180, 0);
             _btnHolder.transform.position = _defensePos.position;
-
-            for (int i = 0; i < _btns.Length; i++)
-                _btns[i].SetSprite(_defenseImg.sprite);
+            _btnHolder.transform.rotation = _defensePos.rotation;
         }
         else
         {
             foreach (var btn in _btns)
-            {
                 btn.gameObject.SetActive(false);
-            }
         }
     }
 
@@ -79,13 +71,9 @@ public class InputHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         foreach (var btn in _btns)
-        {
             btn.gameObject.SetActive(true);
-        }
         _btnHolder.transform.eulerAngles = Vector3.zero;
         _btnHolder.transform.position = _attackPos.position;
-
-        for (int i = 0; i < _btns.Length; i++)
-            _btns[i].SetSprite(_attackImg.sprite);
+        _btnHolder.transform.rotation = _attackPos.rotation;
     }
 }
