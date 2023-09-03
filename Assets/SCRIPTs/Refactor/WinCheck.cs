@@ -1,63 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WinCheck : MonoBehaviour
 {
-    [SerializeField] private GameState _gameState;
+    [SerializeField] private GameObject _holder;
+    [SerializeField] private TMP_Text _title;
+    [SerializeField] private TMP_Text _score;
 
-    [SerializeField] private GameObject _winScreen;
-    [SerializeField] private GameObject _loseScreen;
-    [SerializeField] private GameObject _drawScreen;
+    private void SetResults(string  title, string score)
+    {
+        _holder.SetActive(true);
+        _title.text = title;
+        _score.text = score;
+    }
 
-    
+    private IEnumerator SetResCo(string  title, string score)
+    {
+        yield return new WaitForSeconds(1f);
+        SetResults(title, score);
+    }
 
     public void Check(int egyScore, int cmrScore, int egyAttempt, int cmrAttempt)
     {
-        if (egyAttempt == 3 && cmrAttempt == 3)
-        {
-            if (egyScore - cmrScore >= 2)
-            {
-                _winScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
-            else if (cmrScore - egyScore >= 2)
-            {
-                _loseScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
-        else if (egyAttempt == 4)
-        {
-            if (egyScore - cmrScore >= 2)
-            {
-                _winScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
-            else if (cmrScore - egyScore >= 2)
-            {
-                _loseScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
-        else if (egyAttempt == 4 && cmrAttempt == 4)
+        if (egyAttempt == 4 && cmrAttempt == 4)
         {
             if (egyScore > cmrScore)
-            {
-                _winScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
+                StartCoroutine(SetResCo("You Win!", $"{egyScore}:{cmrScore}"));
             else if (egyScore == cmrScore)
-            {
-                _drawScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
+                StartCoroutine(SetResCo("Friendship Wins!", $"{egyScore}:{cmrScore}"));
             else
-            {
-                _loseScreen.SetActive(true);
-                Time.timeScale = 0;
-            }
+                StartCoroutine(SetResCo("You Lose!", $"{egyScore}:{cmrScore}"));
         }
     }
 }

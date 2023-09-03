@@ -70,13 +70,13 @@ public class ScoreUpdate : MonoBehaviour
             _cmrScore++;
             _cmrScoreText.text = _cmrScore.ToString();
             _cmrAttempts[_cmrAttempt-1].color = Color.white;
-
         }
+        
+        _winCheck.Check(_egyScore, _cmrScore, _egyAttempt, _cmrAttempt);
     }
 
     private void UpdateAttempt(GameState.GameStates gameStates)
     {
-        _winCheck.Check(_egyScore, _cmrScore, _egyAttempt, _cmrAttempt);
         if (_gameState.GameSt == GameState.GameStates.save)
         {
             StartCoroutine(SetMissSprite(_egyAttempts, _egyAttempt));
@@ -87,6 +87,7 @@ public class ScoreUpdate : MonoBehaviour
             StartCoroutine(SetMissSprite(_cmrAttempts, _cmrAttempt));
             _cmrAttempt++;
         }
+
     }
 
     IEnumerator SetMissSprite(Image[] images, int index)
